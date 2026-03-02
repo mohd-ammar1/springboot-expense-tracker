@@ -80,3 +80,8 @@ function typeChanged() {
         });
     }
 }
+
+let dataDoor = document.getElementById("dataDoor");
+dataDoor.onclick(function () {
+    window.location.href="http://localhost:8080/data";
+})

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,9 @@
 <body>
     <div class="container" align="center">
         <h1>Expense Tracker</h1>
+
+        <a th:href="@{/data}" ><button>Show my data</button></a>
+
         <form action="#" th:action="@{/submit}" th:object="${dataSchema}" method="post">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" th:field="*{name}">

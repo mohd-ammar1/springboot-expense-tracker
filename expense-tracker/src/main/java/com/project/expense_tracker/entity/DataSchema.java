@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Data
@@ -14,10 +15,13 @@ import lombok.Setter;
 @Table(name = "Transactions")
 public class DataSchema {
 
+
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+
+
     private float amount;
     private LocalDate date;
     private String type;
@@ -25,9 +29,25 @@ public class DataSchema {
     private String PaymentMethod;
     private String Category;
 
+    @ManyToOne
+    @JoinColumn(name="Userid", referencedColumnName = "id")
+    private UserSchema userSchema;
+
+
+    @Override
     public String toString() {
-        return "DataSchema [name=" + name + ", amount=" + amount + ", date=" + date + ", type=" + type + ", note="
-                + note + ", PaymentMethod=" + PaymentMethod + ", Category=" + Category + "]";
+        return "DataSchema{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", date=" + date +
+                ", type='" + type + '\'' +
+                ", note='" + note + '\'' +
+                ", PaymentMethod='" + PaymentMethod + '\'' +
+                ", Category='" + Category + '\'' +
+                ", userSchema=" + userSchema +
+                '}';
     }
+
 
 }

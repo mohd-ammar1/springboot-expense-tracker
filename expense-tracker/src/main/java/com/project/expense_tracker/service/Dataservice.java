@@ -1,6 +1,7 @@
 package com.project.expense_tracker.service;
 
 import com.project.expense_tracker.entity.DataSchema;
+import com.project.expense_tracker.entity.UserSchema;
 import com.project.expense_tracker.repositry.DataRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class Dataservice {
         return findRes;
     }
 
-    public List<DataSchema> fetchFullData() {
-        return dataRepositry.findAll();
+    public List<DataSchema> fetchFullData( UserSchema userSchema) {
+        return dataRepositry.findByUserSchema(userSchema);
     }
 }

@@ -3,11 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>All Data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/Data-Handler.js}"></script>
 </head>
 <body>
-<div class="container" align="center">
+<div class="shortContainer">
+
+    <h3>Filter And Sorting </h3>
+    <label for="namef">Name: </label>
+    <input type="text" name="namef" id="namef">
+    <br>
+    <label for="amountf">Amount: </label>
+    <input type="number" name="amountf" id="amountf">
+    <select name="amountsel" id="amountsel">
+        <option value="greater">Greater Than</option>
+        <option value="less"> Less Than</option>
+        <option value="equals">Equals</option>
+    </select>
+    <br>
+    <label for="datef">Date: </label>
+    <input type="date" name="datef" id="datef">
+    <select name="datesel" id="datesel">
+        <option value="before">Before</option>
+        <option value="on">On</option>
+        <option value="after">After</option>
+    </select>
+    <br>
+    <label for="typeselect">Type :</label>
+    <select name="typesel" id="typeselect">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+    </select>
+    <br>
+    <label for="pmethodsel">Payment Method: </label>
+    <select name="pmethodsel" id="pmethodsel">
+        <option value="">Payment Method</option>
+        <option value="cash">Cash</option>
+        <option value="upi">UPI</option>
+        <option value="card">Card</option>
+        <option value="banktrans">Bank Transfer</option>
+    </select>
+    <br>
+    <input type="submit" value="Apply Filter">
+    <input type="reset" value="Clear Filter">
+</div>
+
+<div class="container" >
     <h1>Transactions</h1>
-    <table border="1">
+            <table id="dataTable" border="1" cellpadding="1">
         <thead>
         <tr>
             <th>ID</th>
@@ -20,18 +63,10 @@
             <th>Note</th>
         </tr>
         </thead>
+                <tbody>
 
-        <tr th:each="transaction: ${transactions}">
-            <td th:text="${transaction.id}"></td>
-            <td th:text="${transaction.name}"></td>
-            <td th:text="${transaction.amount}"></td>
-            <td th:text="${transaction.date}"></td>
-            <td th:text="${transaction.type}"></td>
-            <td th:text="${transaction.paymentMethod}"></td>
-            <td th:text="${transaction.Category}"></td>
-            <td th:text="${transaction.note}"></td>
-        </tr>
-    </table>
+                </tbody>
+            </table>
 </div>
 </body>
 </html>

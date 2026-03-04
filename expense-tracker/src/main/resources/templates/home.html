@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="stylesheet" th:href="@{/css/style .css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/script.js}"></script>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
             <input type="date" name="date" id="date" th:field="*{date}">
             <br>
             <label for="type">Type</label>
-            <select name="type"id="type" onchange="typeChanged()" th:field="*{type}">
+            <select name="type"id="type"  th:field="*{type}">
                 <option value="" >Select</option>
                 <option value="income">Income</option>
                 <option value="expense">Expense</option>
@@ -49,7 +51,7 @@
         </form>
 
     </div>
-    <script th:src="@{/js/script.js}"></script>
+
 </body>
 
 </html>

@@ -20,34 +20,45 @@ import java.util.Map;
 @RequestMapping("/data")
 public class DataRestController {
 
-
-   @Autowired
-   Dataservice dataservice;
-   @Autowired
+    @Autowired
+    Dataservice dataservice;
+    @Autowired
     UserService userService;
 
-    //return options to ad in select based on expense or income
-        @PostMapping("/categorydata")
-    public Map<String,String> setIncomeExpenseField(@RequestParam String selectedValue){
-        if(selectedValue.equalsIgnoreCase("income")) return dataservice.setIncomeCategories();
-        else if(selectedValue.equalsIgnoreCase("expense")) return dataservice.setExpenseCategories();
-        else return  Map.of("error","Invalid_Type");
+    // return options to ad in select based on expense or income
+    @PostMapping("/categorydata")
+    public Map<String, String> setIncomeExpenseField(@RequestParam String selectedValue) {
+        if (selectedValue.equalsIgnoreCase("income"))
+            return dataservice.setIncomeCategories();
+        else if (selectedValue.equalsIgnoreCase("expense"))
+            return dataservice.setExpenseCategories();
+        else
+            return Map.of("error", "Invalid_Type");
     }
 
-    //return data to FUll Data
+    // return data to FUll Data
     @PostMapping("/userdata")
-    public List<DataSchema> sendData(HttpSession session){
+    public List<DataSchema> sendData(HttpSession session) {
         UserSchema semiuserSchema = (UserSchema) session.getAttribute("loggedUser");
         UserSchema userSchema = userService.getFullSchema(semiuserSchema);
         return dataservice.fetchFullData(userSchema);
     }
 
     @PostMapping("/sort")
-    public List<DataSchema> sortData(HttpSession session, @RequestBody SortSchema sortSchema ){
-         UserSchema semiuserSchema = (UserSchema) session.getAttribute("loggedUser");
+    public List<DataSchema> sortData(HttpSession session, @RequestBody SortSchema sortSchema) {
+        UserSchema semiuserSchema = (UserSchema) session.getAttribute("loggedUser");
         UserSchema userSchema = userService.getFullSchema(semiuserSchema);
-        System.out.println("User: "+userSchema.toString());
-        System.out.println("Sorting details: "+sortSchema.toString());
-        return dataservice.fetchFullData(userSchema);
+        List<DataSchema> sortedData = dataservice.getSortingData(sortSchema);
+        System.out.println("User: " + userSchema.toString());
+        System.out.println("Sorting details: " + sortedData);
+        return sortedData;
     }
+
+    // First QueryDSL query example
+    // @PostMapping("/userdata-querydsl")
+    // public List<DataSchema> sendDataQueryDSL(HttpSession session) {
+    //     UserSchema semiuserSchema = (UserSchema) session.getAttribute("loggedUser");
+    //     UserSchema userSchema = userService.getFullSchema(semiuserSchema);
+    //     return dataservice.getDataSchemaByUserQueryDSL(userSchema);
+    // }
 }

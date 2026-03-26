@@ -12,14 +12,14 @@ import java.sql.Date;
 public class SortSchema {
     String name;
     Double amount;
-    String amountType;
+    String amountType; //same,greater,smaller
     Date finaldate;
-    String datetype;
-    String typeslt;
-    String method;
+    String datetype; //on,before,after
+    String typeslt; //income,expense
+    String paymentMethod; //paymentmethod
 
     public String toString(){
-        return "Name: "+name+" Amount: "+amount+" AmountType: "+amountType+" Date: "+finaldate+" DateType: "+datetype+" Type: "+typeslt+" Method: "+method;
+        return "Name: "+name+" Amount: "+amount+" AmountType: "+amountType+" Date: "+finaldate+" DateType: "+datetype+" Type: "+typeslt+" Method: "+paymentMethod;
     }
 
 }

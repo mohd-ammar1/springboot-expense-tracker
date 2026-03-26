@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface DataRepositry extends JpaRepository<DataSchema,Integer> {
     List<DataSchema> findByUserSchema(UserSchema userSchema);
+    
 }

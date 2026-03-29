@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  color: #333;
+}
+
+.container {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 28px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.container h1 {
+  margin-bottom: 20px;
+  color: #1f3c88;
+}
+
+.container label {
+  display: block;
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.container input[type="text"],
+.container input[type="number"],
+.container input[type="date"],
+.container select,
+.container textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 8px;
+  border: 1px solid #ccd6e0;
+  border-radius: 10px;
+  background: #fbfcff;
+  box-sizing: border-box;
+}
+
+.container textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.container input[type="submit"],
+.container button {
+  margin-top: 22px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #1f3c88;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.container input[type="submit"]:hover,
+.container button:hover {
+  background: #214dbe;
+}
